@@ -1,5 +1,4 @@
 {
-  "homepage": "https://zanada.github.io/",
   "name": "personal-website",
   "version": "0.1.0",
   "private": true,
@@ -7,9 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "lint": "eslint"
   },
   "dependencies": {
     "next": "16.1.6",
@@ -24,7 +21,6 @@
     "clsx": "2.1.1",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
-    "gh-pages": "^6.3.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
