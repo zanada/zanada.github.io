@@ -1,3 +1,4 @@
+import projectData from '../../data/project_list.json';
 
 type ProjectProps = {
   name: string;
@@ -39,8 +40,4 @@ export default function ProjectList() {
         </div>
 	);
 }
-
-const projects : ProjectProps[] = [
-  {name: "Softbody Tetris Simulation", link:"", yearStart:2024, tools:"C++", description:"A simulation and raytracer"},
-  {name: "Horse Hearse", link:"", yearStart:2025, madeWith:"Owen Gallagher, Misha Melynk, Isabelle Cai, David Hu and Colin", tools:"Godot", role:"Gameplay, UI programming", description:"Delivery game"},
-  {name: "pooL", link:"", yearStart:2025, madeWith:"Liam Suter, Milosh Miric, ChromeChameleon, sharpenyourforks", role:"Sprites, Animation, UI Art", description:"Pool game"}]
+const projects : ProjectProps[] = projectData
