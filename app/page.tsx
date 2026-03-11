@@ -4,7 +4,7 @@ import ProjectList from "./ui/components/projectList";
 
 export default function Home() {
   return (
-    <main className="flex gap-10 w-full max-w-3xl flex-col items-center justify-between  bg-transparent sm:items-start overflow-scroll px-10">
+    <main className="flex gap-10 w-full max-w-3xl flex-col items-center justify-between  bg-transparent sm:items-start overflow-scroll px-10 pb-5">
       <div className="flex w-full flex-col items-stretch gap-4 text-lg text-center text-neutral-700 dark:text-zinc-400">
         <h1 className="text-center  text-5xl  font-normal tracking-tight text-foreground dark:text-secondary-100 pt-5 ">
           Hi, I'm <span className="text-brand-600 font-extrabold text-6xl">Saaz</span>

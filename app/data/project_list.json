@@ -1,26 +1,45 @@
 [
 	{
-		"name": "Softbody Tetris Simulation",
-		"link": "",
-		"yearStart": 2024,
-		"tools": "C++",
-		"description": "A simulation and raytracer"
-	},
-	{
 		"name": "Horse Hearse",
-		"link": "",
-		"yearStart": 2025,
+		"link": "https://oman276.itch.io/horse-hearse",
+		"type": "game",
+		"dateStart": {"month":"June", "year":2025},
 		"madeWith": "Owen Gallagher, Misha Melynk, Isabelle Cai, David Hu and Colin",
 		"tools": "Godot",
 		"role": "Gameplay, UI programming",
-		"description": "Delivery game"
+		"description": "A cartoony driving game about being a gig driver delivering dead horses to their final resting place. Make as many deliveries as you can before your rating hits zero!\nI worked on the driving as well as the putting the UI together. Everything was styled to be diagetic. Pixel shaders and multiple viewports make it look like the gameplay takes place in the car's low res nav screen. The menu is navigated by swiping on your phone.",
+		"additionalLinks": [
+			{"uri": "https://github.com/zanada/horse-hearse", "text":"View Code"}
+		]
+	},
+	{
+		"name": "Softbody Tetris Simulation",
+		"link": "https://github.com/zanada/cs488",
+		"type": "project",
+		"dateStart": {"month":"August", "year":2024},
+		"dateEnd": {"month":"May", "year":2024},
+		"tools": "C++, CMake",
+		"description": "Softbody physics simulation with meshless deformations based on shape matching method. Supports collision of multiple objects as well as user interaction via dragging.\n Rendered with a ray tracer optimized to run at near real-time speeds with high triangle count using a SAH Bounding Volume Hierarchy for fast ray-triangle intersection testing.\n Also implemented rasterized rendering, including perspective correct texture mapping."
+	},
+	{
+		"name": "HDR Image Generation",
+		"link": "https://zanada.github.io/hdr-imaging",
+		"type": "project",
+		"dateStart": {"month":"April", "year":2024},
+		"tools": "Python, numpy, matplotlib, Jupyter Notebook",
+		"description": "Application of the Debevec-Malik method to create a High Dynamic Range (HDR) image from a series of multi-exposure images. Also implemented tone mapping to display HDR images in a regular Low Dynamic Range format while maintaining details in high and low brightness areas.",
+		"additionalLinks": [
+			{"uri": "https://github.com/zanada/hdr-imaging", "text":"View Code"}
+		]
 	},
 	{
 		"name": "pooL",
-		"link": "",
-		"yearStart": 2025,
+		"link": "https://djfox58.itch.io/pool",
+		"type": "game",
+		"dateStart": {"month":"August", "year":2025},
+		"tools": "Aseprite",
 		"madeWith": "Liam Suter, Milosh Miric, ChromeChameleon, sharpenyourforks",
 		"role": "Sprites, Animation, UI Art",
-		"description": "Pool game"
+		"description": "A Balatro inspired pool game made for the 2025 GMTK Game Jam where you rack up enough cash to buy new balls and passive effects to improve your next run. I worked on all the ball sprites, as well as their animations and some of the passive icons."
 	}
 ]
