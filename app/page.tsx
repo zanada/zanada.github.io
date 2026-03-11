@@ -10,7 +10,7 @@ export default function Home() {
           Hi, I'm <span className="text-brand-600 font-extrabold text-6xl">Saaz</span>
         </h1>
         <p>
-          I'm a developer and recent graduate of Computer Science at the University of waterloo. I enjoy making things that are creative or help people do their creative work better. Usually, you'll find me working on a games or pixel art.
+          I'm a developer and recent graduate of Computer Science at the University of Waterloo. I enjoy making things that are creative or help people do their creative work better. Usually, you'll find me working on a games or pixel art.
         </p>
         <p>
           I usually work with C++ and Python but my games are made in Godot.
