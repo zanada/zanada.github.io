@@ -1,5 +1,8 @@
+import Image, { ImageLoader } from 'next/image';
 import projectData from '../../data/project_list.json';
 const projects : ProjectProps[] = projectData
+
+import rectifier_thumb from '../../../public/projects/thumbnail_rectifier.webp';
 
 /*
 Consider if you want to change to Date types for more formatting options
@@ -35,19 +38,29 @@ function ProjectEntry({project} : {project:ProjectProps}) {
   if (project.role !== undefined) roleline = " - " + project.role;
 
 	return (
-    <div>
-      <h2 className="font-semibold">
-        <a href={project.link} className='text-brand-600'>{project.name}</a> 
-        {dateLine}<span className=' font-normal'>{roleline}</span>
-      </h2>
-      {project.tools && <p className="pl-4 text-neutral-600"> Tools: {project.tools} </p>}
-      {project.madeWith && <p className="italic pl-4 text-neutral-600"> Made with {project.madeWith} </p>}
-      <p className="pl-4">{project.description}</p>
-      <p className='pl-4 italic text-brand-600'>
-        {project.additionalLinks && project.additionalLinks.map(({uri, text}) => (
-          <a key={text} href={uri}>{text}</a>
-        ))}
-      </p>
+    <div className='flex flex-col sm:flex-row items-start gap-8'> 
+      <Image className='w-full'  //w-50 pl-6 pt-6
+        placeholder='blur'
+        src={rectifier_thumb}
+        alt="Game Thumbnail"
+        width={1920}
+        height={1183}
+        unoptimized
+      />
+      <div>
+        <h2 className="font-semibold">
+          <a href={project.link} className='text-brand-600'>{project.name}</a> 
+          {dateLine}<span className=' font-normal'>{roleline}</span>
+        </h2>
+        {project.tools && <p className=" text-neutral-600"> Tools: {project.tools} </p>}
+        {project.madeWith && <p className="italic text-neutral-600"> Made with {project.madeWith} </p>}
+        <p >{project.description}</p>
+        <p className=' italic text-brand-600'>
+          {project.additionalLinks && project.additionalLinks.map(({uri, text}) => (
+            <a key={text} href={uri}>{text}</a>
+          ))}
+        </p>
+      </div>
     </div>
 	);
 }
