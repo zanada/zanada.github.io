@@ -1,8 +1,8 @@
-import Image, { ImageLoader } from 'next/image';
+import ExportedImage from 'next-image-export-optimizer';
 import projectData from '../../data/project_list.json';
 const projects : ProjectProps[] = projectData
 
-import rectifier_thumb from '../../../public/projects/thumbnail_rectifier.webp';
+import rectifier_thumb from '../../../public/projects/thumbnail_rectifier.png';
 
 /*
 Consider if you want to change to Date types for more formatting options
@@ -39,13 +39,13 @@ function ProjectEntry({project} : {project:ProjectProps}) {
 
 	return (
     <div className='flex flex-col sm:flex-row items-start gap-8'> 
-      <Image className='w-full'  //w-50 pl-6 pt-6
-        placeholder='blur'
-        src={rectifier_thumb}
-        alt="Game Thumbnail"
+      <ExportedImage className='w-3xs section-box'  //w-50 pl-6 pt-6
+        //placeholder='blur'
+        src="/projects/thumbnail_rectifier.png"
         width={1920}
         height={1183}
-        unoptimized
+        alt="Game Thumbnail"
+        sizes="20vw"
       />
       <div>
         <h2 className="font-semibold">

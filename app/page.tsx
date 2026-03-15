@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer/legacy/ExportedImage";
 import Link from "next/link";
 import ProjectList from "./ui/components/projectList";
 
@@ -7,7 +7,7 @@ import itchLogo from "../public/itchio-textless-black.svg";
 
 export default function Home() {
   return (
-    <main className="flex gap-10 w-full max-w-4xl flex-col items-center justify-between  bg-transparent sm:items-start overflow-scroll px-10 pb-5">
+    <main className="flex gap-10 w-full max-w-4xl flex-col items-center justify-between  bg-transparent sm:items-start px-10 pb-5">
       <div className="flex max-w-xl flex-col self-center gap-4 text-lg text-center text-neutral-700 dark:text-zinc-400">
         <h1 className="text-center  text-5xl  font-normal tracking-tight text-foreground dark:text-secondary-100 pt-5 ">
           Hi, I'm <span className="text-brand-600 font-extrabold text-6xl">Saaz</span>
@@ -33,7 +33,7 @@ export default function Home() {
           <a 
             href="https://github.com/zanada"
             className="flex flex-row  gap-1 items-center"> 
-            <Image
+            <ExportedImage
               width={20}
               height={20}
               src={githubLogo}
@@ -44,7 +44,7 @@ export default function Home() {
           <a 
             href="https://zanada.itch.io/"
             className="flex flex-row  gap-1 items-center"> 
-            <Image
+            <ExportedImage
               width={20}
               height={20}
               src={itchLogo}

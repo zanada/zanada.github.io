@@ -8,6 +8,23 @@ const nextConfig: NextConfig = {
     // We set the root to the parent directory to match Next.js' inferred workspace root
     root: path.resolve(__dirname, '..'),
   },
+
+  // configuration for image export optimizer
+  images: {
+    loader: "custom",
+    imageSizes: [],
+    deviceSizes: [320, 480, 750, 1080, 1200, 1920],
+  },
+  transpilePackages: ["next-image-export-optimizer"],
+  env: {
+    nextImageExportOptimizer_imageFolderPath: "public",
+    nextImageExportOptimizer_exportFolderPath: "out",
+    nextImageExportOptimizer_quality: "80",
+    nextImageExportOptimizer_storePicturesInWEBP: "true",
+    nextImageExportOptimizer_exportFolderName: "nextImageExportOptimizer",
+    nextImageExportOptimizer_generateAndUseBlurImages: "true",
+    nextImageExportOptimizer_remoteImageCacheTTL: "0",
+  },
 };
 
 module.exports = nextConfig;
