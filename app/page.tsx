@@ -2,6 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import ProjectList from "./ui/components/projectList";
 
+import githubLogo from "../public/GitHub_Invertocat_Black.svg";
+import itchLogo from "../public/itchio-textless-black.svg";
+
 export default function Home() {
   return (
     <main className="flex gap-10 w-full max-w-3xl flex-col items-center justify-between  bg-transparent sm:items-start overflow-scroll px-10 pb-5">
@@ -33,7 +36,7 @@ export default function Home() {
             <Image
               width={20}
               height={20}
-              src="/GitHub_Invertocat_Black.svg"
+              src={githubLogo}
               alt="Github Logo"
             />
             <p className="text-center underline">GitHub</p>
@@ -44,7 +47,7 @@ export default function Home() {
             <Image
               width={20}
               height={20}
-              src="/itchio-textless-black.svg"
+              src={itchLogo}
               alt="Itch.io Logo"
             />
             <p className="text-center  underline">Itch.io</p>
