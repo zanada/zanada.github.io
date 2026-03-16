@@ -1,4 +1,4 @@
-import ExportedImage from "next-image-export-optimizer/legacy/ExportedImage";
+import ExportedImage from "next-image-export-optimizer";
 import Link from "next/link";
 import ProjectList from "./ui/components/projectList";
 
@@ -38,6 +38,8 @@ export default function Home() {
               height={20}
               src={githubLogo}
               alt="Github Logo"
+              unoptimized
+              placeholder="empty"
             />
             <p className="text-center underline">GitHub</p>
           </a>
@@ -49,6 +51,8 @@ export default function Home() {
               height={20}
               src={itchLogo}
               alt="Itch.io Logo"
+              unoptimized
+              placeholder="empty"
             />
             <p className="text-center  underline">Itch.io</p>
           </a>

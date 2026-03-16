@@ -48,21 +48,23 @@ function ProjectEntry({project} : {project:ProjectProps}) {
   };
 
 	return (
-    <div className='flex flex-col sm:flex-row items-start gap-8'> 
-      <ExportedImage className={clsx('w-3xs',
-        {
-          '[image-rendering:pixelated]': isLoaded === false,
-          '[image-rendering:auto]': isLoaded === true,
-        }
-      )}  //w-50 pl-6 pt-6
-        //placeholder='blur'
-        src="/projects/thumbnail_rectifier.png"
-        width={1920}
-        height={1183}
-        alt="Game Thumbnail"
-        sizes="20vw"
-        onLoad={handleImageLoad}
-      />
+    <div className='flex flex-col sm:flex-row items-start gap-8'>
+      <div className='w-70 shrink-0'>
+        <ExportedImage className={clsx('w-full h-auto object-cover',
+          {
+            '[image-rendering:pixelated]': isLoaded === false,
+            '[image-rendering:auto]': isLoaded === true,
+          }
+        )}  //w-50 pl-6 pt-6
+          //placeholder='blur'
+          src="/projects/thumbnail_rectifier.png"
+          width={1920}
+          height={1183}
+          alt="Game Thumbnail"
+          sizes="20vw"
+          onLoad={handleImageLoad}
+        />
+      </div>
       <div>
         <h2 className="font-semibold">
           <a href={project.link} className='text-brand-600'>{project.name}</a> 
