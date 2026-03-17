@@ -1,12 +1,7 @@
-'use client'
-
-import ExportedImage from 'next-image-export-optimizer';
 import projectData from '../../data/project_list.json';
-import clsx from 'clsx';
-const projects : ProjectProps[] = projectData
+import PixelatedImage from './pixelatedImage';
 
-import rectifier_thumb from '../../../public/projects/thumbnail_rectifier.png';
-import { useState } from 'react';
+const projects : ProjectProps[] = projectData
 
 /*
 Consider if you want to change to Date types for more formatting options
@@ -41,28 +36,16 @@ function ProjectEntry({project} : {project:ProjectProps}) {
 
   if (project.role !== undefined) roleline = " - " + project.role;
 
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  const handleImageLoad = () => {
-    setIsLoaded(true);
-  };
-
 	return (
     <div className='flex flex-col sm:flex-row items-start gap-8'>
       <div className='w-70 shrink-0'>
-        <ExportedImage className={clsx('w-full h-auto object-cover',
-          {
-            '[image-rendering:pixelated]': isLoaded === false,
-            '[image-rendering:auto]': isLoaded === true,
-          }
-        )}  //w-50 pl-6 pt-6
+        <PixelatedImage className='w-full h-auto object-cover rounded-lg'
           //placeholder='blur'
           src="/projects/thumbnail_rectifier.png"
           width={1920}
           height={1183}
           alt="Game Thumbnail"
           sizes="20vw"
-          onLoad={handleImageLoad}
         />
       </div>
       <div>
