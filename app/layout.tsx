@@ -19,11 +19,9 @@ export default function RootLayout({
       <body
         className={`${lexend.variable} antialiased  flex flex-col  items-center`}
       >
-        <div className="flex flex-col w-full max-w-5xl min-h-screen items-center justify-start bg-background font-sans dark:bg-brand-950">
-          <header className="w-full flex justify-center"> <NavBar/> </header>
-          
-          {children}
-        </div>
+        <header className="w-full flex justify-center"> <NavBar/> </header>
+        {children}
+        <footer><p className="text-neutral-600">©2026 Saaz Ramsubhag</p></footer>
       </body>
     </html>
   );
