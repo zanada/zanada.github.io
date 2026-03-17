@@ -1,4 +1,6 @@
 import projectData from '../../data/project_list.json';
+import PixelatedImage from './pixelatedImage';
+
 const projects : ProjectProps[] = projectData
 
 /*
@@ -18,6 +20,7 @@ type ProjectProps = {
   role?: string;
   description: string;
   additionalLinks?: {uri:string, text:string}[];
+  thumbnail: string;
 }
 
 function ProjectEntry({project} : {project:ProjectProps}) {
@@ -35,26 +38,38 @@ function ProjectEntry({project} : {project:ProjectProps}) {
   if (project.role !== undefined) roleline = " - " + project.role;
 
 	return (
-    <div>
-      <h2 className="font-semibold">
-        <a href={project.link} className='text-brand-600'>{project.name}</a> 
-        {dateLine}<span className=' font-normal'>{roleline}</span>
-      </h2>
-      {project.tools && <p className="pl-4 text-neutral-600"> Tools: {project.tools} </p>}
-      {project.madeWith && <p className="italic pl-4 text-neutral-600"> Made with {project.madeWith} </p>}
-      <p className="pl-4">{project.description}</p>
-      <p className='pl-4 italic text-brand-600'>
-        {project.additionalLinks && project.additionalLinks.map(({uri, text}) => (
-          <a key={text} href={uri}>{text}</a>
-        ))}
-      </p>
+    <div className='flex flex-col sm:flex-row items-start gap-4 sm:gap-8'>
+      <div className='w-full shrink-0 sm:w-70'>
+        <PixelatedImage className='w-full h-auto object-cover rounded-lg'
+          //placeholder='blur'
+          src={"/projects/"+project.thumbnail}
+          width={1920}
+          height={1080}
+          alt={project.name + " Thumbnail"}
+          sizes="(max-width: 768px) 100vw, 20vw"
+        />
+      </div>
+      <div>
+        <h2 className="font-semibold">
+          <a href={project.link} className='text-brand-600'>{project.name}</a> 
+          {dateLine}<span className=' font-normal'>{roleline}</span>
+        </h2>
+        {project.tools && <p className=" text-neutral-600"> Tools: {project.tools} </p>}
+        {project.madeWith && <p className="italic text-neutral-600"> Made with {project.madeWith} </p>}
+        <p >{project.description}</p>
+        <p className=' italic text-brand-600'>
+          {project.additionalLinks && project.additionalLinks.map(({uri, text}) => (
+            <a key={text} href={uri}>{text}</a>
+          ))}
+        </p>
+      </div>
     </div>
 	);
 }
 
 export default function ProjectList() {
 	return (
-		<div className="flex flex-col w-full self-center gap-4">
+		<div className="flex flex-col w-full self-center gap-8 sm:gap-4">
       {projects.sort((a:ProjectProps, b:ProjectProps) => {
         const dateA = new Date(`01 ${a.dateStart.month} ${a.dateStart.year}`);
         const dateB = new Date(`01 ${b.dateStart.month} ${b.dateStart.year}`);

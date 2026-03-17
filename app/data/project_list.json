@@ -10,7 +10,8 @@
 		"description": "A cartoony driving game about being a gig driver delivering dead horses to their final resting place. Make as many deliveries as you can before your rating hits zero!\nI implemented driving as well as put most of the UI together. Everything was styled to be diagetic: pixel shaders and an embedded 3D viewport make it look like the gameplay takes place in the car's low res nav screen, and the menu is navigated by swiping on your phone.\nI also added polish with screen shakes, particle effects, and tire marks",
 		"additionalLinks": [
 			{"uri": "https://github.com/zanada/horse-hearse", "text":"View Code"}
-		]
+		],
+		"thumbnail": "thumbnail_horsehearse.png"
 	},
 	{
 		"name": "Softbody Tetris Simulation",
@@ -19,7 +20,8 @@
 		"dateStart": {"month":"August", "year":2024},
 		"dateEnd": {"month":"May", "year":2024},
 		"tools": "C++, CMake",
-		"description": "Softbody physics simulation with meshless deformations based on shape matching method. Supports collision of multiple objects as well as user interaction via dragging.\n Rendered with a ray tracer optimized to run at near real-time speeds with high triangle count using a SAH Bounding Volume Hierarchy for fast ray-triangle intersection testing.\n Also implemented rasterized rendering, including perspective correct texture mapping."
+		"description": "Softbody physics simulation with meshless deformations based on shape matching method. Supports collision of multiple objects as well as user interaction via dragging.\n Rendered with a ray tracer optimized to run at near real-time speeds with high triangle count using a SAH Bounding Volume Hierarchy for fast ray-triangle intersection testing.\n Also implemented rasterized rendering, including perspective correct texture mapping.",
+		"thumbnail": "thumbnail_tetris.png"
 	},
 	{
 		"name": "HDR Image Generation",
@@ -30,7 +32,8 @@
 		"description": "Application of the Debevec-Malik method to create a High Dynamic Range (HDR) image from a series of multi-exposure images. Also implemented tone mapping to display HDR images in a regular Low Dynamic Range format while maintaining details in high and low brightness areas.",
 		"additionalLinks": [
 			{"uri": "https://github.com/zanada/hdr-imaging", "text":"View Code"}
-		]
+		],
+		"thumbnail": "thumbnail_hdr.png"
 	},
 	{
 		"name": "pooL",
@@ -40,7 +43,8 @@
 		"tools": "Aseprite",
 		"madeWith": "Liam Suter, Milosh Miric, ChromeChameleon, sharpenyourforks",
 		"role": "Sprites, Animation, UI Art",
-		"description": "A Balatro inspired pool game made for the 2025 GMTK Game Jam where you rack up enough cash to buy new balls and passive effects to improve your next run. I worked on all the ball sprites, as well as their animations and some of the passive icons."
+		"description": "A Balatro inspired pool game made for the 2025 GMTK Game Jam where you rack up enough cash to buy new balls and passive effects to improve your next run. I worked on all the ball sprites, as well as their animations and some of the passive icons.",
+		"thumbnail": "thumbnail_pool.png"
 	},
 	{
 		"name": "Rectifier",
@@ -53,7 +57,8 @@
 		"description": "A game where you work as a censor in the Ministry of Truth - blocking out any information that may harm the aims of the regime. I worked on the censoring mechanic, where you can scribble on any part of a page and it detects what you crossed out.",
 		"additionalLinks": [
 			{"uri": "https://github.com/oman276/UW-Winter-2026-Game-Jam", "text":"View Code"}
-		]
+		],
+		"thumbnail": "thumbnail_rectifier.png"
 	},
 	{
 		"name": "Splash Out",
@@ -63,10 +68,11 @@
 		"tools": "Godot",
 		"madeWith": "Misha Melynk, Isabelle Cai, David Hu",
 		"role": "System Programming, Design",
-		"description": "In this fast-paced PvP arena game, you play as a little fire creature trying to out the other players and be the last one standing. I worked primarily on the level and round system, making adding new levels simple.",
+		"description": "In this fast-paced PvP arena game, you play as a little fire creature trying to out the other players and be the last one standing. I worked primarily on the level and round system, making adding new levels simple. At least one controller required",
 		"additionalLinks": [
 			{"uri": "https://github.com/kertox662/GDC-GameJam-W25", "text":"View Code"}
-		]
+		],
+		"thumbnail": "thumbnail_splashout.png"
 	},
 	{
 		"name": "Operator! Operator!",
@@ -79,16 +85,18 @@
 		"description": "A simple but addictive game about connecting phone lines before the timer runs out. I had a lot of fun giving physics to the wires.",
 		"additionalLinks": [
 			{"uri": "https://dh0001.itch.io/operator-operator", "text":"View Code"}
-		]
+		],
+		"thumbnail": "thumbnail_operator.png"
 	},
 	{
 		"name": "Platformer Template",
-		"link": "https://github.com/uwgdc/Platformer-Template/commits/main/",
+		"link": "https://github.com/uwgdc/Platformer-Template/",
 		"type": "project",
 		"dateStart": {"month":"March", "year":2024},
 		"dateEnd": {"month":"September", "year":2024},
 		"tools": "Godot",
-		"description": "A template Godot project used to help others get started with Godot and basic programming pattern. Made as part of the UW Game Dev Club."
+		"description": "A template Godot project used to help others get started with Godot and basic programming pattern. Made as part of the UW Game Dev Club.",
+		"thumbnail": "thumbnail_platformer.png"
 	},
 	{
 		"name": "Let Me Summon",
@@ -101,6 +109,7 @@
 		"description": "Go against wizard code and try to summon a demon by drawing magic runes, but keep an eye out for the enforcers who want to stop you! A simple game but I was proud of implementing symbol detection to for what you draw.",
 		"additionalLinks": [
 			{"uri": "https://github.com/zanada/let-me-summon", "text":"View Code"}
-		]
+		],
+		"thumbnail": "thumbnail_letmesummon.png"
 	}
 ]

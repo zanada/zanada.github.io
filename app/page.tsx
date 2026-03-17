@@ -1,6 +1,9 @@
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import Link from "next/link";
 import ProjectList from "./ui/components/projectList";
+
+import githubLogo from "../public/GitHub_Invertocat_Black.svg";
+import itchLogo from "../public/itchio-textless-black.svg";
 
 export default function Home() {
   return (
@@ -29,23 +32,27 @@ export default function Home() {
         <div className="flex flex-row w-full justify-center gap-8"> 
           <a 
             href="https://github.com/zanada"
-            className="flex flex-row  gap-1 items-center"> 
-            <Image
+            className="flex flex-row  gap-1 items-center text-brand-600"> 
+            <ExportedImage
               width={20}
               height={20}
-              src="/GitHub_Invertocat_Black.svg"
+              src={githubLogo}
               alt="Github Logo"
+              unoptimized 
+              placeholder="empty"
             />
             <p className="text-center underline">GitHub</p>
           </a>
           <a 
             href="https://zanada.itch.io/"
             className="flex flex-row  gap-1 items-center"> 
-            <Image
+            <ExportedImage
               width={20}
               height={20}
-              src="/itchio-textless-black.svg"
+              src={itchLogo}
               alt="Itch.io Logo"
+              unoptimized
+              placeholder="empty"
             />
             <p className="text-center  underline">Itch.io</p>
           </a>

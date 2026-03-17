@@ -11,6 +11,9 @@
   .section-box {
     @apply flex flex-col items-stretch w-full py-5 px-5 border border-background bg-black rounded-2xl
   }
+  .disable-blur{
+    image-rendering: pixelated;
+  }
 }
 
 @theme inline {
