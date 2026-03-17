@@ -44,7 +44,7 @@ function ProjectEntry({project} : {project:ProjectProps}) {
           //placeholder='blur'
           src={"/projects/"+project.thumbnail}
           width={1920}
-          height={1183}
+          height={1080}
           alt={project.name + " Thumbnail"}
           sizes="(max-width: 768px) 100vw, 20vw"
         />
