@@ -20,6 +20,7 @@ type ProjectProps = {
   role?: string;
   description: string;
   additionalLinks?: {uri:string, text:string}[];
+  thumbnail: string;
 }
 
 function ProjectEntry({project} : {project:ProjectProps}) {
@@ -37,15 +38,15 @@ function ProjectEntry({project} : {project:ProjectProps}) {
   if (project.role !== undefined) roleline = " - " + project.role;
 
 	return (
-    <div className='flex flex-col sm:flex-row items-start gap-8'>
-      <div className='w-70 shrink-0'>
+    <div className='flex flex-col sm:flex-row items-start gap-4 sm:gap-8'>
+      <div className='w-full shrink-0 sm:w-70'>
         <PixelatedImage className='w-full h-auto object-cover rounded-lg'
           //placeholder='blur'
-          src="/projects/thumbnail_rectifier.png"
+          src={"/projects/"+project.thumbnail}
           width={1920}
           height={1183}
-          alt="Game Thumbnail"
-          sizes="20vw"
+          alt={project.name + " Thumbnail"}
+          sizes="(max-width: 768px) 100vw, 20vw"
         />
       </div>
       <div>
@@ -68,7 +69,7 @@ function ProjectEntry({project} : {project:ProjectProps}) {
 
 export default function ProjectList() {
 	return (
-		<div className="flex flex-col w-full self-center gap-4">
+		<div className="flex flex-col w-full self-center gap-8 sm:gap-4">
       {projects.sort((a:ProjectProps, b:ProjectProps) => {
         const dateA = new Date(`01 ${a.dateStart.month} ${a.dateStart.year}`);
         const dateB = new Date(`01 ${b.dateStart.month} ${b.dateStart.year}`);
