@@ -32,13 +32,13 @@ export default function Home() {
         <div className="flex flex-row w-full justify-center gap-8"> 
           <a 
             href="https://github.com/zanada"
-            className="flex flex-row  gap-1 items-center"> 
+            className="flex flex-row  gap-1 items-center text-brand-600"> 
             <ExportedImage
               width={20}
               height={20}
               src={githubLogo}
               alt="Github Logo"
-              unoptimized
+              unoptimized 
               placeholder="empty"
             />
             <p className="text-center underline">GitHub</p>
