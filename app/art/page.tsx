@@ -6,8 +6,8 @@ import PixelatedImage from "../ui/components/pixelatedImage"
 
 export default function Page() {
   return (
-    <main className="flex flex-1 gap-8 w-full max-w-7xl flex-col px-10 ">
-      <div className="flex flex-row flex-wrap gap-2 ">
+    <main className="flex flex-1 gap-8 w-full max-w-7xl flex-col sm:px-10 ">
+      <div className="flex flex-row flex-wrap gap-4 sm:gap-2 ">
         {
           artData.sort((a,b) => b.created.getTime() - a.created.getTime()).map((art, index) => (
             <div className='h-auto sm:h-60 shrink-0 w-full sm:w-auto' 
@@ -24,7 +24,6 @@ export default function Page() {
           ))
         }
       </div>
-      <p className='self-center justify-center text-center'>under construction</p>
     </main>
   )
 }
