@@ -16,11 +16,14 @@ export default function PixelatedImage(props:ExportedImageProps) {
 	return (
 		<ExportedImage 
       {...props} 
+      draggable={false}
       className={clsx(props.className,
       {
         '[image-rendering:pixelated]': isLoaded === false,
         '[image-rendering:auto]': isLoaded === true,
-      })}
+      },
+       'select-none'
+      )}
       onLoad={(event):void=>{handleImageLoad(); if(props.onLoad) {props.onLoad(event)}}}
     />
 	);

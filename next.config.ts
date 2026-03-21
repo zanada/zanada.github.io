@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
   images: {
     loader: "custom",
     imageSizes: [],
-    deviceSizes: [320, 480, 750, 1080, 1200, 1920],
+    deviceSizes: [750, 1200, 1920],
   },
   transpilePackages: ["next-image-export-optimizer"],
   env: {
