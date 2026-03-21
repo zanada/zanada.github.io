@@ -1,4 +1,4 @@
-import projectData from '../../data/project_list.json';
+import projectData from '../../lib/project_list.json';
 import PixelatedImage from './pixelatedImage';
 
 const projects : ProjectProps[] = projectData

@@ -6,7 +6,7 @@ import NavBar from "./ui/components/navBar";
 
 export const metadata: Metadata = {
   title: "Saaz",
-  description: "My personal website, built with Next.js and Tailwind",
+  description: "My personal website",
 };
 
 export default function RootLayout({
@@ -17,13 +17,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${lexend.variable} antialiased  flex flex-col  items-center`}
+        className={`${lexend.variable} antialiased min-h-screen flex flex-col  items-center`}
       >
-        <div className="flex flex-col w-full max-w-5xl min-h-screen items-center justify-start bg-background font-sans dark:bg-brand-950">
-          <header className="w-full flex justify-center"> <NavBar/> </header>
-          
-          {children}
-        </div>
+        <header className="w-full flex justify-center"> <NavBar/> </header>
+        {children}
+        <footer><p className="text-neutral-600 mb-4">©2026 Saaz Ramsubhag</p></footer>
       </body>
     </html>
   );

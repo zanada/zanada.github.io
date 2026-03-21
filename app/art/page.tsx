@@ -1,3 +1,29 @@
+'use client'
+
+import ExportedImage from "next-image-export-optimizer"
+import { artData } from "../lib/art-imports"
+import PixelatedImage from "../ui/components/pixelatedImage"
+
 export default function Page() {
-  return <p>Under construction</p>;
+  return (
+    <main className="flex flex-1 gap-8 w-full max-w-7xl flex-col sm:px-10 ">
+      <div className="flex flex-row flex-wrap gap-4 sm:gap-2 ">
+        {
+          artData.sort((a,b) => b.created.getTime() - a.created.getTime()).map((art, index) => (
+            <div className='h-auto sm:h-60 shrink-0 w-full sm:w-auto' 
+              key={art.id}
+              style={{aspectRatio: art.src.width/art.src.height}}
+            >
+              <PixelatedImage className='h-full w-full object-contain'
+                src={art.src}
+                alt={art.alt}
+                sizes={'(max-width: 500px) 100vw, (max-width: 783px) 33vw, 20vw'}
+                preload={index<5}
+              />
+            </div>
+          ))
+        }
+      </div>
+    </main>
+  )
 }

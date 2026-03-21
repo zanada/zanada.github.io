@@ -15,9 +15,6 @@ export default function Home() {
         <p>
           I'm a developer and recent graduate of Computer Science at the University of Waterloo. I enjoy making things that are creative or help people do their creative work better. I love making games and have participated in a game jam every 4 months for the last 3 years. In addition to programming and design, I make pixel art in my spare time and am always eager to incorporate it into my games.
         </p>
-        <p>
-          I usually work with C++ and Python but my games are made in Godot.
-        </p>
       </div>
       <div className="w-full flex flex-col gap-4 text-neutral-700 font-normal sm:flex-col">
         <h1 className="text-center text-2xl font-semibold tracking-tight text-foreground dark:text-secondary-100">
