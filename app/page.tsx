@@ -13,7 +13,7 @@ export default function Home() {
           Hi, I'm <span className="text-brand-600 font-extrabold text-6xl">Saaz</span>
         </h1>
         <p>
-          I'm a developer and recent graduate of Computer Science at the University of Waterloo. I enjoy making things that are creative or help people do their creative work better. I love making games and have participated in a game jam every 4 months for the last 3 years. In addition to programming and design, I make pixel art in my spare time and am always eager to incorporate it into my games.
+          I'm a developer and recent graduate of Computer Science at the University of Waterloo. I love making games and have participated in a game jam every 4 months for the last 3 years. In addition to programming and design, I make pixel art in my spare time and am always eager to incorporate it into my games.
         </p>
       </div>
       <div className="w-full flex flex-col gap-4 text-neutral-700 font-normal sm:flex-col">
