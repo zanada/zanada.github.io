@@ -9,6 +9,8 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@reactuses/core": "^6.3.0",
+    "brace-expansion": "^5.0.5",
     "next": "^16.2.1",
     "next-image-export-optimizer": "^1.20.1",
     "node": "^25.8.1",

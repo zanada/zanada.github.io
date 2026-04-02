@@ -1,6 +1,3 @@
-'use client'
-
-import ExportedImage from "next-image-export-optimizer"
 import { artData } from "../lib/art-imports"
 import PixelatedImage from "../ui/components/pixelatedImage"
 import ImageGallery from "../ui/components/imageGallery"
@@ -14,6 +11,7 @@ export default function Page() {
         spacing = {10}
       />
 
+      {/*
       <div className="flex flex-row flex-wrap gap-4 sm:gap-2">
         {
           artData.sort((a,b) => b.created.getTime() - a.created.getTime()).map((art, index) => (
@@ -30,7 +28,7 @@ export default function Page() {
             </div>
           ))
         }
-      </div> 
+      </div> */}
     </main>
   )
 }
