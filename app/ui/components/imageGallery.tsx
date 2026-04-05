@@ -4,7 +4,7 @@ import { StaticImageData } from "next/image";
 import { useMemo, useState, useEffect, useRef } from "react";
 //import { useMeasure, useWindowSize } from "react-use";
 import PixelatedImage from "./pixelatedImage";
-import { useMeasure, useMediaQuery } from "@reactuses/core";
+import { useElementBounding, useElementSize, useMeasure, useMediaQuery } from "@reactuses/core";
 //import { useRaf } from "react-use";
 
 export type GalleryImage = {
@@ -17,34 +17,21 @@ export type ImageGalleryProps = {
 	images: GalleryImage[]
 	targetHeight: number
 	spacing?: number
-  twBreakpoint?: string
-	
 }
 
 function convertRemToPixels(rem:number) : number {    
     return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
 }
 
-export default function ImageGallery({ images, targetHeight, spacing=0, twBreakpoint='sm'}: ImageGalleryProps) {
+export default function ImageGallery({ images, targetHeight, spacing=0}: ImageGalleryProps) {
   // window and container sizing for reactive layout
   const ref = useRef<HTMLDivElement>(null);
-  const [rect, stop] = useMeasure(ref);
-  //const [ref, {width:rect.width}] = useMeasure<HTMLDivElement>();
+  const [containerWidth, height] = useElementSize(ref);
+  //const [ref, {width:containerWidth}] = useMeasure<HTMLDivElement>();
   //const {width: windowWidth, height: windowHeight} = useWindowSize();
 
-  const [breakpointPx, setBreakpointPx] = useState(640); // default to sm breakpoint
-
-  useEffect(() => {
-    const styles = window.getComputedStyle(document.documentElement);
-    const breakpointRem = styles.getPropertyValue(`--breakpoint-${twBreakpoint}`);
-    const px = convertRemToPixels(Number(breakpointRem.trim().substring(0, breakpointRem.length-3)));
-    setBreakpointPx(px);
-  }, [twBreakpoint]);
-
-  const isVertical : boolean = useMediaQuery(`(max-width: ${breakpointPx}px)`, false);
-
   const rowImages = useMemo(() => {
-    if (isVertical || rect.width === 0) return [];
+    if (containerWidth === 0) return [];
 
     let rows : {images:GalleryImage[], rowHeight?: number}[] = [{images:[]}];
 
@@ -60,47 +47,55 @@ export default function ImageGallery({ images, targetHeight, spacing=0, twBreakp
       });
 
       // see if current image can't fit
-      if (rect.width - spacing*(Math.max(lastrow.images.length-1,0)) - widthtaken < targetHeight * image.data.width / image.data.height) {
-        lastrow.rowHeight = targetHeight * (rect.width - spacing*(Math.max(lastrow.images.length-1,0))) / widthtaken; // close row
-
+      if (containerWidth - spacing*(Math.max(lastrow.images.length,0)) - widthtaken < targetHeight * image.data.width / image.data.height) {
+        // close off row with existing images
+        if (lastrow.images.length > 0)
+          lastrow.rowHeight = targetHeight * (containerWidth - spacing*(Math.max(lastrow.images.length-1,0))) / widthtaken; // close row
+        
+        // image can't fit in empty row because it would be too wide
+        // reduce height instead
+        else {
+          lastrow.images.push(image);
+          lastrow.rowHeight = containerWidth * image.data.height / image.data.width;
+        }
         // create new row
         rows.push({images:[]});
         lastrow = rows[rows.length-1];
       }
       lastrow.images.push(image);
     });
-    rows[rows.length-1].rowHeight = targetHeight;
+    if (rows[rows.length-1].images.length > 0) {
+      rows[rows.length-1].rowHeight = targetHeight;
+    }
+    else { rows.pop(); }
+    
     return rows;
-  }, [rect.width, targetHeight, images]);
-
-  if (isVertical) {
-    return (
-      <>
-        {//<p>width: {rect.width} breakpoint: {breakpointPx} vertical: {isVertical.toString()}</p>
-        }
-        <div ref={ref} className="flex flex-col gap 2" style={{gap:spacing}}>
-          {images.map((image, imageIndex) =>
-            <div className='h-auto w-full shrink-0  border-b-blue-600' 
-              key={image.data.src}
-            >
-              <PixelatedImage className='h-full w-full object-contain'
-                src={image.data}
-                alt={image.alt}
-                sizes={'(max-width: 500px) 100vw, (max-width: 783px) 33vw, 20vw'}
-                preload={imageIndex<5}
-              />
-            </div>
-          )}
-        </div>
-      </>
-    )
-  }
+  }, [containerWidth, targetHeight]);
 
   return (
 	<>
-	  {//<p>width: {rect.width} breakpoint: {breakpointPx} vertical: {isVertical.toString()}</p>
+    {//<p>width: {containerWidth} rows: {rowImages.length}</p>
     }
-    <div ref={ref} className="flex flex-col" style={{gap:spacing}}>
+    {// mobile layout
+    }
+    <div className="flex-col gap 2 flex sm:hidden" style={{gap:spacing}}>
+      {images.map((image, imageIndex) =>
+        <div className='h-auto w-full shrink-0  border-b-blue-600' 
+          key={image.data.src}
+        >
+          <PixelatedImage className='h-full w-full object-contain'
+            src={image.data}
+            alt={image.alt}
+            sizes={'(max-width: 500px) 100vw, (max-width: 783px) 33vw, 20vw'}
+            preload={imageIndex<5}
+          />
+        </div>
+      )}
+    </div>
+
+    {// justified desktop layout
+    }
+    <div ref={ref} className="hidden sm:flex flex-col visible w-full min-h-5 min-w-5" style={{gap:spacing}}>
 		{rowImages.map((row, rowIndex)=> (
 			<div key={rowIndex} className='flex flex-row w-full border-amber-600' 
 				style={{
