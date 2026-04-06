@@ -92,7 +92,8 @@ export default function ImageGallery({ images, targetHeight, spacing=0}: ImageGa
           <PixelatedImage className='h-full w-full object-contain'
             src={image.data}
             alt={image.alt}
-            sizes={'(max-width: 500px) 100vw, (max-width: 783px) 33vw, 20vw'}
+            sizes={'(max-width: 640px) 100vw, (max-width: 783px) 33vw, 20vw'}
+            loading={imageIndex < 5 ? "eager" : "lazy"}
             preload={imageIndex<5}
           />
         </div>
@@ -116,7 +117,8 @@ export default function ImageGallery({ images, targetHeight, spacing=0}: ImageGa
 						<PixelatedImage className='h-full w-full object-contain'
 							src={image.data}
 							alt={image.alt}
-							sizes={'(max-width: 500px) 100vw, (max-width: 783px) 33vw, 20vw'}
+							sizes={'(max-width: 640px) 100vw, (max-width: 783px) 33vw, 20vw'}
+							loading={imageIndex < 5 ? "eager" : "lazy"}
 							preload={imageIndex<5}
 						/>
 					</div>
