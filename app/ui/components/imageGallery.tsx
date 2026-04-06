@@ -72,15 +72,21 @@ export default function ImageGallery({ images, targetHeight, spacing=0}: ImageGa
     return rows;
   }, [containerWidth, targetHeight]);
 
+  useEffect(()=>{
+    let info : string = "Rows: \n";
+    rowImages.forEach((row) => {
+      info += `images: ${row.images.length} height: ${row.rowHeight}\n`
+    })
+    console.log(info);
+  }, [rowImages])
+
   return (
 	<>
-    {//<p>width: {containerWidth} rows: {rowImages.length}</p>
-    }
     {// mobile layout
     }
     <div className="flex-col gap 2 flex sm:hidden" style={{gap:spacing}}>
       {images.map((image, imageIndex) =>
-        <div className='h-auto w-full shrink-0  border-b-blue-600' 
+        <div className='h-auto w-full shrink-0' 
           key={image.data.src}
         >
           <PixelatedImage className='h-full w-full object-contain'
@@ -97,13 +103,14 @@ export default function ImageGallery({ images, targetHeight, spacing=0}: ImageGa
     }
     <div ref={ref} className="hidden sm:flex flex-col visible w-full min-h-5 min-w-5" style={{gap:spacing}}>
 		{rowImages.map((row, rowIndex)=> (
-			<div key={rowIndex} className='flex flex-row w-full border-amber-600' 
+			<div key={rowIndex} className='flex flex-row w-full' 
 				style={{
 					height:row.rowHeight||targetHeight,
 					gap:spacing
 				}}> 
 				{row.images.map((image, imageIndex) =>
-					<div className='h-full w-auto shrink-0  border-b-blue-600' 
+					<div className='h-full shrink-0' 
+            style={{aspectRatio:image.data.width/image.data.height}}
 						key={image.data.src}
 					>
 						<PixelatedImage className='h-full w-full object-contain'
