@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { geistMono, geistSans, lexend } from "./ui/fonts";
+import { lexend } from "./ui/fonts";
 import NavBar from "./ui/components/navBar";
 
 
