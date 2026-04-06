@@ -1,16 +1,14 @@
-import { Geist, Geist_Mono, Lexend } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 
 export const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  preload: false
 });
 
 export const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  preload: false
 });
 
-export const lexend = Lexend({
-  variable: "--font-lexend",
-  subsets: ["latin"],
-});

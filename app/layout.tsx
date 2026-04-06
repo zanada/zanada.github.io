@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { geistMono, geistSans, lexend } from "./ui/fonts";
+import { geistMono, geistSans } from "./ui/fonts";
 import NavBar from "./ui/components/navBar";
 
 
@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${lexend.variable} antialiased min-h-screen flex flex-col  items-center`}
+        className={`${geistSans.variable} antialiased min-h-screen flex flex-col  items-center`}
       >
         <header className="w-full flex justify-center"> <NavBar/> </header>
         {children}
