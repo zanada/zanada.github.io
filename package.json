@@ -16,7 +16,8 @@
     "node": "^25.8.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "react-use": "^17.6.0"
+    "react-use": "^17.6.0",
+    "regl": "^2.1.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -26,6 +27,9 @@
     "clsx": "2.1.1",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
+    "glslify": "^7.1.1",
+    "glslify-loader": "^2.0.0",
+    "raw-loader": "^4.0.2",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

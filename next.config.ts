@@ -7,6 +7,21 @@ const nextConfig: NextConfig = {
   turbopack: {
     // We set the root to the parent directory to match Next.js' inferred workspace root
     root: path.resolve(__dirname, '..'),
+    rules: {
+        '*.{glsl,vs,fs,vert,frag}': {
+          loaders: [
+            {
+              loader: 'raw-loader',
+              options: {},
+            },
+            {
+              loader: 'glslify-loader',
+              options: {},
+            },
+          ],
+          as: '*.js',
+        },
+      },
   },
 
   // configuration for image export optimizer
