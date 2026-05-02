@@ -73,6 +73,10 @@ rampensau palette
 #eee9d6, #dbbfa8, #cc7e77, #c24063, #9b266f, #6e136c, #280a37, #140830
 */
 
+.pixelated {
+  image-rendering: pixelated
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     --background: #eee9d6;

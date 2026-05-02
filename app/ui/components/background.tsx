@@ -1,21 +1,55 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import createREGL from "regl";
 
+import fragmentShader from "../shaders/background.frag";
+import { off } from "process";
+
 const Background: React.FC = () => {
+	const pixelSize = 8.0;
+	const lowPixelRatio = 1.0/8.0; // 1/n => nxn "pixels"
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 
 	useEffect(() => {
-		if (!canvasRef.current) return;
+		const canvas = canvasRef.current;
+		if (!canvas) return;
 
 		// Initialize regl with the canvas
 		const regl = createREGL({
-			canvas: canvasRef.current,
+			canvas: canvas,
 			attributes: {
 				antialias: true, alpha: true,
 			},
 		});
+
+		const resize = () => {
+			// using a small pixel ratio reduces the size of the canvas and gives easy and fast
+			// pixel effect. Only to be used when the pages doesnt scroll, there is a "snapping"
+			// effect otherwise
+
+			// 1. Sync canvas internal pixel dimensions with its CSS/offset size
+			// Using devicePixelRatio ensures it stays sharp on Retina displays
+			canvas.width = window.innerWidth * lowPixelRatio;
+			canvas.height = window.innerHeight * lowPixelRatio;
+		};
+
+		let ticking = false;
+		
+		const handleScroll = () => {
+			if (!ticking) {
+				window.requestAnimationFrame(() => {
+					const subPixelOffset = -(window.scrollY % pixelSize);
+					canvas.style.transform = `translate3d(0, ${subPixelOffset}px, 0)`;
+					ticking = false;
+				});
+				ticking = true;
+			}
+		};
+
+		window.addEventListener("scroll", handleScroll, { passive: true });
+		window.addEventListener("resize", resize);
+		resize(); // call once initially
 
 		// Define the drawing command
 		const drawBackground = regl({
@@ -29,19 +63,7 @@ const Background: React.FC = () => {
 		`,
 
 			// Fragment Shader
-			frag: `
-			precision highp float;
-			uniform float time;
-			uniform float scroll;
-			uniform vec2 resolution;
-
-			void main() {
-				vec2 uv = gl_FragCoord.xy / resolution;
-				// Simple example logic using scroll and time
-				float color = 0.5 + 0.5 * sin(uv.y * 10.0 + scroll * 5.0 + time);
-				gl_FragColor = vec4(vec3(color * 0.2, 0.1, color * 0.5), 1.0);
-			}
-		`,
+			frag: fragmentShader,
 
 			attributes: {
 				// Creates a single large triangle that covers the screen
@@ -49,9 +71,9 @@ const Background: React.FC = () => {
 			},
 
 			uniforms: {
-				time: ({ tick }) => tick * 0.01,
-				scroll: () => window.scrollY / document.documentElement.scrollHeight,
-				resolution: ({ viewportWidth, viewportHeight }) => [viewportWidth, viewportHeight],
+				u_time: ({ tick }) => tick * 0.01,
+				u_scroll: () => Math.floor(window.scrollY / pixelSize),
+				u_resolution: ({ drawingBufferWidth, drawingBufferHeight }) => [drawingBufferWidth, drawingBufferHeight],
 			},
 
 			count: 3,
@@ -67,6 +89,8 @@ const Background: React.FC = () => {
 		});
 
 		return () => {
+			window.removeEventListener("scroll", handleScroll)
+			window.removeEventListener("resize", resize);
 			frame.cancel();
 			regl.destroy();
 		};
@@ -75,7 +99,8 @@ const Background: React.FC = () => {
 	return (
 		<canvas
 			ref={canvasRef}
-			className="fixed top-0 left-0 -z-10 w-full h-full pointer-events-none bg-transparent"
+			style={{height: `calc(100vh + ${pixelSize}px)`}}
+			className="fixed top-0 left-0 -z-10 w-full pointer-events-none bg-transparent [image-rendering:crisp-edges]"
 		/>
 	);
 };

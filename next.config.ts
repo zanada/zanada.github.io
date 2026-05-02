@@ -10,14 +10,8 @@ const nextConfig: NextConfig = {
     rules: {
         '*.{glsl,vs,fs,vert,frag}': {
           loaders: [
-            {
-              loader: 'raw-loader',
-              options: {},
-            },
-            {
-              loader: 'glslify-loader',
-              options: {},
-            },
+            {loader: 'raw-loader',options: {}},
+            {loader: 'glslify-loader',options: {}},
           ],
           as: '*.js',
         },
