@@ -7,8 +7,8 @@ import fragmentShader from "../shaders/background.frag";
 import { off } from "process";
 
 const Background: React.FC = () => {
-	const pixelSize = 8.0;
-	const lowPixelRatio = 1.0/8.0; // 1/n => nxn "pixels"
+	const pixelSize = 4.0;
+	const lowPixelRatio = 1.0/pixelSize; // 1/n => nxn "pixels"
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 
 	useEffect(() => {
@@ -24,10 +24,6 @@ const Background: React.FC = () => {
 		});
 
 		const resize = () => {
-			// using a small pixel ratio reduces the size of the canvas and gives easy and fast
-			// pixel effect. Only to be used when the pages doesnt scroll, there is a "snapping"
-			// effect otherwise
-
 			// 1. Sync canvas internal pixel dimensions with its CSS/offset size
 			// Using devicePixelRatio ensures it stays sharp on Retina displays
 			canvas.width = window.innerWidth * lowPixelRatio;
