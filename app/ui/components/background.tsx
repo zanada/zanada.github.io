@@ -4,7 +4,6 @@ import React, { useEffect, useRef, useState } from "react";
 import createREGL from "regl";
 
 import fragmentShader from "../shaders/background.frag";
-import { off } from "process";
 
 const Background: React.FC = () => {
 	const pixelSize = 4.0;
