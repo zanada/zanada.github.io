@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import createREGL from "regl";
 
 import fragmentShader from "../shaders/background.frag";
+import blueNoise from "../shaders/dither/patterns/BlueNoise_L_32.png";
 
 const Background: React.FC = () => {
 	const pixelSize = 4.0;
@@ -21,6 +22,29 @@ const Background: React.FC = () => {
 				antialias: true, alpha: true,
 			},
 		});
+
+		const noiseTexture = regl.texture({
+			width: 1,
+			height: 1,
+			data: new Uint8Array([158, 0, 0, 255]), // RGBA black
+			mag: 'nearest',
+			min: 'nearest',
+			wrapS: 'repeat',
+			wrapT: 'repeat'
+		});
+
+		const img = new Image();
+		img.src = blueNoise.src;
+		img.onload = () => {
+			noiseTexture({
+				data: img,
+				width: img.width,
+				height: img.height,
+				wrap: "repeat",
+				mag: 'nearest',
+				min: 'nearest'
+			});
+		};
 
 		const resize = () => {
 			// 1. Sync canvas internal pixel dimensions with its CSS/offset size
@@ -69,6 +93,8 @@ const Background: React.FC = () => {
 				u_time: ({ tick }) => tick * 0.01,
 				u_scroll: () => Math.floor(window.scrollY / pixelSize),
 				u_resolution: ({ drawingBufferWidth, drawingBufferHeight }) => [drawingBufferWidth, drawingBufferHeight],
+				u_noiseTexture: () => noiseTexture,
+				u_noiseTextureSize: () => noiseTexture.width
 			},
 
 			count: 3,

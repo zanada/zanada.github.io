@@ -17,6 +17,8 @@ float halftone4(vec2 coords);
 uniform float u_time;
 uniform float u_scroll;
 uniform vec2 u_resolution;
+uniform sampler2D u_noiseTexture;
+uniform float u_noiseTextureSize;
 
 void main() {
 	vec2 coordFlipped = gl_FragCoord.xy;
@@ -25,10 +27,11 @@ void main() {
 	vec2 worldCoord = vec2(coordFlipped.x, coordFlipped.y + u_scroll);
 
 	// Simple example logic using scroll and time
-	float value = 0.5 + cnoise3(vec3(worldCoord * 0.04, u_time/15.0)) * 0.5;
-	value = pow(value, 4.0) * 4.0 - 0.5;
+	float value = 0.5 + cnoise3(vec3(worldCoord * 0.02, u_time/15.0)) * 0.5;
+	value = pow(value, 4.0) * 2.0 - 0.3;
+	//value = texture2D(u_noiseTexture, worldCoord / u_noiseTextureSize).r;
 
-	float threshold = bayer2(worldCoord);
+	float threshold = texture2D(u_noiseTexture, worldCoord / u_noiseTextureSize).r;
 
 	if (value < threshold) discard;
 	gl_FragColor = vec4(vec3(0.82, 0.741, 0.812), 1.0);
